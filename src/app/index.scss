@@ -17,8 +17,21 @@ $primary-color: #1AB91B;
 // bower:scss
 // endbower
 
+
+html {
+  position:relative;
+  min-height: 100%;
+}
 body{
   font-family: 'Open Sans', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.hs-centered {
+  flex: 1 0 auto;
+  min-height:800px;
 }
 
 .hs-header{
@@ -41,6 +54,22 @@ body{
   margin-top:20px;
   margin-bottom:20px;
 }
+
+.hs-twitter {
+  min-height:450px;
+}
+
+.hs-footer {
+  flex:none;
+  width: 100%;
+  background-color: #1AB91B;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+
+
 
 
 /**
