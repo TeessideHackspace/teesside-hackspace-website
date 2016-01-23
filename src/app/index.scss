@@ -1,0 +1,51 @@
+/**
+ *  If you want to override some foundation settings, you have to change values here.
+ *  The list of settings values are listed here bower_components/foundation/scss/foundation/_settings.scss
+ */
+$primary-color: #1AB91B;
+
+/**
+ *  The import of foundation is made manually because there is still no links of the
+ *  sass version in their bower.json...
+ */
+@import '../../bower_components/foundation/scss/foundation';
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.hs-header{
+  .hs-name{
+    h1{
+      font-weight:bold;
+      line-height:1;
+      margin-top:20px;
+    }
+  }
+  .hs-logo{
+    fill: $primary-color;
+    height:128px;
+    width:128px;
+  }
+
+}
+
+.hs-nav{
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
