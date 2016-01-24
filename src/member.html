@@ -1,0 +1,226 @@
+<!doctype html>
+<html ng-app="teessideHackspaceWebsite">
+<head>
+  <meta charset="utf-8">
+  <title>teessideHackspaceWebsite</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300,300italic,400italic,600,600italic,700italic,800italic'
+    rel='stylesheet' type='text/css'>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css({.tmp/serve,src}) styles/app.css -->
+  <!-- inject:css -->
+  <!-- css files will be automatically insert here -->
+  <!-- endinject -->
+  <!-- endbuild -->
+</head>
+<body>
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="hs-centered">
+  <div class="container">
+
+    <div class="row hs-header">
+      <div class="large-2 medium-2 small-4 columns">
+        <img src="assets/images/logo.svg" class="hs-logo">
+      </div>
+      <div class="large-10 medium-10 small-8 columns hs-name">
+        <h1>Teesside <br>
+          Hackspace</h1>
+      </div>
+    </div>
+
+
+    <nav class="top-bar row hs-nav">
+      <section class="top-bar-section">
+        <ul class="left">
+          <li><a href="/">Home</a></li>
+          <li><a href="/organisation">Organisation</a></li>
+          <li class="active"><a href="/member">Membership</a></li>
+          <li><a href="https://wiki.teessidehackspace.org.uk/">Wiki</a></li>
+        </ul>
+      </section>
+    </nav>
+
+    <div class="row hs-body">
+      <h1>Join Teesside Hackspace</h1>
+      <p>
+        Teesside Hackspace is a members-owned non-profit association. Members have a hand in the running of the
+        organisation, and will have 24/7 access to the space once we get one.
+      </p>
+      <p>
+        Membership can be paid monthly or annually by Direct Debit. We ask that you pay what you think the space will be
+        worth to you.
+        Please be as generous as you can, the more money we raise through membership, the better the space we get can
+        be.
+        The space will require our members to contribute an average subscription of £15/month to survive. For students,
+        retirees or low income members the minimum subscription is £5/month.
+      </p>
+
+      <p>By joining the London Hackspace you're becoming a member of Teesside Hackspace Ltd., and you agree to be bound
+        by
+        <a href="/organisation/docs/articles.pdf">our constitution</a>. You also agree to follow the
+        <a href="http://wiki.teessidehackspace.org.uk/view/Rules">rules of the space</a>.</p>
+
+      <p><a href="http://www.legislation.gov.uk/ukpga/2006/46/part/8/chapter/2/crossheading/general">UK law</a> requires
+        that
+        you provide your real name and address in order to join. Your name will be visible to all members.</p>
+
+
+      <div ng-controller="SignupController">
+        <form novalidate class="simple-form hs-signup-form">
+          <fieldset>
+            <legend>Account</legend>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Email address
+                  <input type="text"/>
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Password
+                  <input type="password"/>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Confirm password
+                  <input type="password"/>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Billing Address</legend>
+            <div class="row">
+              <div class="large-6 columns">
+                <label>First Name
+                  <input type="text"/>
+                </label>
+              </div>
+              <div class="large-6 columns">
+                <label>Last Name
+                  <input type="text"/>
+                </label>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Address Line 1
+                  <input type="text"/>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Address Line 2
+                  <input type="text"/>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Town
+                  <input type="text"/>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-6 columns">
+                <label>Postcode
+                  <input type="text"/>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Emergency Contact</legend>
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Name
+                  <input type="text"/>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Phone Number
+                  <input type="text"/>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Subscription</legend>
+            <div class="row">
+              <div class="large-6 columns">
+                <label>Payment period</label>
+                <input type="radio" name="month" value="month" id="month"><label for="month">Monthly</label>
+                <input type="radio" name="year" value="year" id="year"><label for="year">Annually</label>
+              </div>
+              <div class="large-6 columns">
+                <div class="row collapse">
+                  <label>Amount</label>
+                  <div class="small-3 columns">
+                    <span class="prefix">&pound;</span>
+                  </div>
+                  <div class="small-9 columns">
+                    <input type="text"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <h5>Next: Set up Direct Debit with GoCardless</h5>
+          <input type="submit" ng-click="update(user)" class="button" value="Next"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer class="hs-footer">
+  <p>Copyright © 2016 Teesside Hackspace Ltd.</p>
+</footer>
+
+<!-- build:js(src) scripts/member/vendor.js -->
+<!-- bower:js -->
+<!-- run `gulp inject` to automatically populate bower script dependencies -->
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/member/app.js -->
+<!-- inject:js -->
+<!-- js files will be automatically insert here -->
+<!-- endinject -->
+
+<!-- inject:partials -->
+<!-- angular templates will be automatically converted in js and inserted here -->
+<!-- endinject -->
+<!-- endbuild -->
+
+</body>
+</html>
