@@ -1,44 +1,145 @@
-<div class="container">
+<div class="row hs-body">
+  <h1>Join Teesside Hackspace</h1>
+  <p>
+    Teesside Hackspace is a members-owned non-profit association. Members have a hand in the running of the
+    organisation, and will have 24/7 access to the space once we get one.
+  </p>
+  <p>
+    Membership can be paid monthly or annually by Direct Debit. We ask that you pay what you think the space will be
+    worth to you.
+    Please be as generous as you can, the more money we raise through membership, the better the space we get can
+    be.
+    The space will require our members to contribute an average subscription of £15/month to survive. For students,
+    retirees or low income members the minimum subscription is £5/month.
+  </p>
 
-  <div class="row hs-header">
-    <div class="large-2 columns">
-      <img src="assets/images/logo.svg" class="hs-logo">
-    </div>
-    <div class="large-10 columns hs-name">
-      <h1>Teesside <br>
-        Hackspace</h1>
-    </div>
-  </div>
+  <p>By joining the London Hackspace you're becoming a member of Teesside Hackspace Ltd., and you agree to be bound
+    by
+    <a href="/organisation/docs/articles.pdf">our constitution</a>. You also agree to follow the
+    <a href="http://wiki.teessidehackspace.org.uk/view/Rules">rules of the space</a>.</p>
+
+  <p><a href="http://www.legislation.gov.uk/ukpga/2006/46/part/8/chapter/2/crossheading/general">UK law</a> requires
+    that
+    you provide your real name and address in order to join. Your name will be visible to all members.</p>
+
+  <div>
+    <form novalidate class="simple-form hs-signup-form">
+      <fieldset>
+        <legend>Account</legend>
+
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Email address
+              <input type="text"/>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Password
+              <input type="password"/>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Confirm password
+              <input type="password"/>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Billing Address</legend>
+        <div class="row">
+          <div class="large-6 columns">
+            <label>First Name
+              <input type="text"/>
+            </label>
+          </div>
+          <div class="large-6 columns">
+            <label>Last Name
+              <input type="text"/>
+            </label>
+          </div>
+        </div>
 
 
-  <nav class="top-bar row hs-nav">
-    <section class="top-bar-section">
-      <ul class="left">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a ng-href="#">Membership</a></li>
-        <li><a ng-href="#">Wiki</a></li>
-      </ul>
-    </section>
-  </nav>
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Address Line 1
+              <input type="text"/>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Address Line 2
+              <input type="text"/>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Town
+              <input type="text"/>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-6 columns">
+            <label>Postcode
+              <input type="text"/>
+            </label>
+          </div>
+        </div>
+      </fieldset>
 
+      <fieldset>
+        <legend>Emergency Contact</legend>
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Name
+              <input type="text"/>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Phone Number
+              <input type="text"/>
+            </label>
+          </div>
+        </div>
+      </fieldset>
 
+      <fieldset>
+        <legend>Subscription</legend>
+        <div class="row">
+          <div class="large-6 columns">
+            <label>Payment period</label>
+            <input type="radio" name="month" value="month" id="month"><label for="month">Monthly</label>
+            <input type="radio" name="year" value="year" id="year"><label for="year">Annually</label>
+          </div>
+          <div class="large-6 columns">
+            <div class="row collapse">
+              <label>Amount</label>
+              <div class="small-3 columns">
+                <span class="prefix">&pound;</span>
+              </div>
+              <div class="small-9 columns">
+                <input type="text"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
 
-  <div class="row hs-body">
-    <p>We're a non-profit group trying to build a workshop in Middlesbrough where members can come to share tools and knowledge.</p>
-    <div class="large-4 columns">
-      <h3>Get Involved</h3>
-      <p>We're a non-profit group trying to build workshop where members can come to share tools and knowledge.</p>
-      <h3>Membership</h3>
-      <p>Our members have a hand in the running of the organisation as well as 24/7 access to the space. Pay us what you think is fair — join Teesside Hackspace.</p>
-    </div>
-    <div class="large-4 columns">
-      <h3>Membership</h3>
-      <p>Our members have a hand in the running of the organisation as well as 24/7 access to the space. Pay us what you think is fair — join Teesside Hackspace.</p>
-    </div>
-    <div class="large-4 columns">
-      <h3>Membership</h3>
-      <p>Our members have a hand in the running of the organisation as well as 24/7 access to the space. Pay us what you think is fair — join Teesside Hackspace.</p>
-    </div>
+      <h5>Next: Set up Direct Debit with GoCardless</h5>
+      <input type="submit" ng-click="update(user)" class="button" value="Next"/>
+    </form>
   </div>
 
 </div>
