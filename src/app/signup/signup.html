@@ -24,44 +24,18 @@
 
   <div>
     <form novalidate class="simple-form hs-signup-form">
-      <fieldset>
-        <legend>Account</legend>
-
-        <div class="row">
-          <div class="large-12 columns">
-            <label>Email address
-              <input type="text"/>
-            </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="large-12 columns">
-            <label>Password
-              <input type="password"/>
-            </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <label>Confirm password
-              <input type="password"/>
-            </label>
-          </div>
-        </div>
-      </fieldset>
 
       <fieldset>
         <legend>Billing Address</legend>
         <div class="row">
           <div class="large-6 columns">
             <label>First Name
-              <input type="text"/>
+              <input type="text" ng-model="details.user.first_name"/>
             </label>
           </div>
           <div class="large-6 columns">
             <label>Last Name
-              <input type="text"/>
+              <input type="text" ng-model="details.user.last_name"/>
             </label>
           </div>
         </div>
@@ -70,28 +44,28 @@
         <div class="row">
           <div class="large-12 columns">
             <label>Address Line 1
-              <input type="text"/>
+              <input type="text" ng-model="details.user.billing_address1"/>
             </label>
           </div>
         </div>
         <div class="row">
           <div class="large-12 columns">
             <label>Address Line 2
-              <input type="text"/>
+              <input type="text" ng-model="details.user.billing_address2"/>
             </label>
           </div>
         </div>
         <div class="row">
           <div class="large-12 columns">
             <label>Town
-              <input type="text"/>
+              <input type="text" ng-model="details.user.billing_town"/>
             </label>
           </div>
         </div>
         <div class="row">
           <div class="large-6 columns">
             <label>Postcode
-              <input type="text"/>
+              <input type="text" ng-model="details.user.billing_postcode"/>
             </label>
           </div>
         </div>
@@ -101,15 +75,22 @@
         <legend>Emergency Contact</legend>
         <div class="row">
           <div class="large-12 columns">
-            <label>Name
-              <input type="text"/>
+            <label>First Name
+              <input type="text" ng-model="details.emergency_contact.first_name"/>
             </label>
           </div>
         </div>
         <div class="row">
+        <div class="large-12 columns">
+          <label>Last Name
+            <input type="text" ng-model="details.emergency_contact.last_name"/>
+          </label>
+        </div>
+      </div>
+        <div class="row">
           <div class="large-12 columns">
             <label>Phone Number
-              <input type="text"/>
+              <input type="text" ng-model="details.emergency_contact.phone"/>
             </label>
           </div>
         </div>
@@ -120,8 +101,8 @@
         <div class="row">
           <div class="large-6 columns">
             <label>Payment period</label>
-            <input type="radio" name="month" value="month" id="month"><label for="month">Monthly</label>
-            <input type="radio" name="year" value="year" id="year"><label for="year">Annually</label>
+            <input ng-model="details.subscription.interval" type="radio" name="month" value="month" id="month"><label for="month">Monthly</label>
+            <input ng-model="details.subscription.interval" type="radio" name="year" value="year" id="year"><label for="year">Annually</label>
           </div>
           <div class="large-6 columns">
             <div class="row collapse">
@@ -130,7 +111,7 @@
                 <span class="prefix">&pound;</span>
               </div>
               <div class="small-9 columns">
-                <input type="text"/>
+                <input type="text" ng-model="details.subscription.amount"/>
               </div>
             </div>
           </div>
@@ -138,7 +119,7 @@
       </fieldset>
 
       <h5>Next: Set up Direct Debit with GoCardless</h5>
-      <input type="submit" ng-click="update(user)" class="button" value="Next"/>
+      <input type="submit" ng-click="signup()" class="button" value="Next"/>
     </form>
   </div>
 

@@ -7,11 +7,25 @@
       authProvider.init({
         domain: 'teessidehackspace.eu.auth0.com',
         clientID: 'a2TPwlfe3SUYzIJ7YQcuDpx1nA1tzQPY',
-        loginUrl: '/login'
+        loginState: 'login'
       });
     })
-    .run(function(auth) {
+    .run(function($rootScope, auth, store, jwtHelper, $location) {
       auth.hookEvents();
+
+      $rootScope.$on('$stateChangeStart', function() {
+        var token = store.get('token');
+        if (token) {
+          if (!jwtHelper.isTokenExpired(token)) {
+            if (!auth.isAuthenticated) {
+              auth.authenticate(store.get('profile'), token);
+            }
+          } else {
+            // Either show the login page or use the refresh token to get a new idToken
+            $location.path('/');
+          }
+        }
+      });
     });
 
 })();
