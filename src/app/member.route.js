@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -15,10 +15,19 @@
         data: {
           requiresLogin: true
         }
-      }).state('login', {
-      url: '/login',
-      controller: 'LoginController'
-    });
+      })
+      .state('signup_confirm', {
+        url: '/signup_confirm',
+        templateUrl: 'app/signup_confirm/signup_confirm.html',
+        controller: 'SignupConfirmController',
+        data: {
+          requiresLogin: true
+        }
+      })
+      .state('login', {
+        url: '/login',
+        controller: 'LoginController'
+      });
 
     $urlRouterProvider.otherwise('/login');
   }

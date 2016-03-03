@@ -6,7 +6,7 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController($scope, $http, auth, store, $location) {
+  function LoginController($scope, $http, auth, store, $location, $state) {
     auth.signin({
       authParams: {
         scope: 'openid name email roles' // Specify the scopes you want to retrieve
@@ -15,7 +15,7 @@
       // Success callback
       store.set('profile', profile);
       store.set('token', token);
-      $location.path('/');
+      $state.go($scope.fromState, $scope.fromParams);
     }, function (err) {
       $location.path('/login');
       //window.location.replace("/");

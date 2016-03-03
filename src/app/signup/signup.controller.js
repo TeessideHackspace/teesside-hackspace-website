@@ -28,7 +28,6 @@
     }
 
     $scope.signup = function() {
-      console.log($scope.details);
       $http({
         method: 'POST',
         url: 'https://vill7dylal.execute-api.eu-west-1.amazonaws.com/dev/signup',
@@ -41,7 +40,6 @@
           var url = response.data.data.gocardless_url;
           window.location = url;
         }
-        console.log(response);
       })
     }
   }
