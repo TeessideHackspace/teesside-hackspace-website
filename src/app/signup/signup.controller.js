@@ -6,7 +6,7 @@
     .controller('SignupController', SignupController);
 
   /** @ngInject */
-  function SignupController($scope, $http, auth, store) {
+  function SignupController($scope, $http, auth, store, membershipApi) {
     $scope.details = {
       user: {
         first_name: '',
@@ -31,7 +31,7 @@
       console.log($scope.details);
       $http({
         method: 'POST',
-        url: 'https://vill7dylal.execute-api.eu-west-1.amazonaws.com/dev/signup',
+        url: membershipApi.base + 'signup',
         headers: {
           Authorization: 'Bearer ' + store.get('token')
         },
