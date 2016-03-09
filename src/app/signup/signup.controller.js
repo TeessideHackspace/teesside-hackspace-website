@@ -28,7 +28,6 @@
     }
 
     $scope.signup = function() {
-      console.log($scope.details);
       $http({
         method: 'POST',
         url: membershipApi.base + 'signup',
@@ -41,7 +40,6 @@
           var url = response.data.data.gocardless_url;
           window.location = url;
         }
-        console.log(response);
       })
     }
   }
