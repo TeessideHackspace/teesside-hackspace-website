@@ -17,14 +17,19 @@
         }
       }).state('login', {
         url: '/login',
-        controller: 'LoginController'
+        controller: 'LoginController',
+      templateUrl: 'app/login/login.html'
       }).state('signup-confirm', {
-        url: '/signup-confirm',
-        templateUrl: 'app/signup-confirm/signup-confirm.html',
-        controller: 'SignupConfirmController'
-      });
+      url: '/signup-confirm',
+      templateUrl: 'app/signup-confirm/signup-confirm.html',
+      controller: 'SignupConfirmController'
+    }).state('main', {
+      url: '/',
+      templateUrl: 'app/main/main.html',
+      controller: 'MainController'
+    });
 
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/');
   }
 
 })();
