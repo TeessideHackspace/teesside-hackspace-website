@@ -11,7 +11,7 @@
 
     $scope.roles = [];
     $scope.showSignupPrompt = false;
-    $scope.subscriptionStatus = 'unpaid';
+    $scope.subscriptionStatus = 'Unpaid';
 
     if(auth && auth.isAuthenticated && auth.profile && auth.profile.roles) {
       $scope.roles = auth.profile.roles;
@@ -21,12 +21,12 @@
       $scope.showSignupPrompt = true;
     }
 
-    if($scope.roles.indexOf('payment_pending') == -1) {
-      $scope.subscriptionStatus = 'payment_pending';
+    if($scope.roles.indexOf('payment_pending') != -1) {
+      $scope.subscriptionStatus = 'Payment Pending';
     }
 
-    if($scope.roles.indexOf('paid') == -1) {
-      $scope.subscriptionStatus = 'paid';
+    if($scope.roles.indexOf('paid') != -1) {
+      $scope.subscriptionStatus = 'Paid';
     }
 
     $http({
@@ -39,6 +39,7 @@
       console.log(response)
       if(response && response.data && response.data.data) {
         $scope.accountDetails = response.data.data;
+        $scope.signupDateString = moment(response.data.data.signup_date).format("dddd, MMMM Do YYYY, h:mm:ss a");
       }
     });
 

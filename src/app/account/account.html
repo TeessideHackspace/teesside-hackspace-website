@@ -1,5 +1,32 @@
 <div class="row hs-body">
 
-  <div ng-show=""></div>
+  <div class="panel" ng-show="signupDateString">
+    <h4>You have been a member since <strong>{{signupDateString}}</strong></h4>
+  </div>
+
+  <div class="row">
+    <div class="large-6 columns">
+      <h5>Address</h5>
+      <p>{{accountDetails.user.first_name}} {{accountDetails.user.last_name}}<br>
+      {{accountDetails.user.billing_address1}}<br>
+      {{accountDetails.user.billing_address2}}<br ng-if="accountDetails.user.billing_address2">
+      {{accountDetails.user.billing_town}}<br>
+      {{accountDetails.user.billing_postcode}}</p>
+
+      <h5>Emergency Contact</h5>
+      <p>{{accountDetails.emergency_contact.first_name}} {{accountDetails.emergency_contact.last_name}}<br>
+        {{accountDetails.emergency_contact.phone}}</p>
+    </div>
+    <div class="large-6 columns">
+      <h5>Subscription</h5>
+      <p>&pound;{{accountDetails.subscription.amount}} per {{accountDetails.subscription.interval}}</p>
+
+      <h5>Subscription Status</h5>
+      <p>Your subscription status is: <strong>{{subscriptionStatus}}</strong></p>
+    </div>
+
+    <p></p></div>
+
+  <div ng-show="accountDetails"></div>
 
 </div>
