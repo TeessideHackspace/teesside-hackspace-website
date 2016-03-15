@@ -4,7 +4,7 @@
     <h4>You have been a member since <strong>{{signupDateString}}</strong></h4>
   </div>
 
-  <div class="row">
+  <div class="row" ng-show="accountDetails">
     <div class="large-6 columns">
       <h5>Address</h5>
       <p>{{accountDetails.user.first_name}} {{accountDetails.user.last_name}}<br>
@@ -25,8 +25,7 @@
       <p>Your subscription status is: <strong>{{subscriptionStatus}}</strong></p>
     </div>
 
-    <p></p></div>
+  </div>
 
-  <div ng-show="accountDetails"></div>
-
+  <button class="button" ui-sref="signup" ng-show="showSignupPrompt || !accountDetails">Become a member</button>
 </div>
