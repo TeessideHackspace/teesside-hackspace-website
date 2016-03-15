@@ -6,7 +6,7 @@
     .controller('AccountController', AccountController);
 
   /** @ngInject */
-  function AccountController($scope, $http, auth, membershipApi, store) {
+  function AccountController($scope, $http, auth, membershipApi, store, $state) {
     console.log(auth)
 
     $scope.roles = [];
@@ -42,6 +42,13 @@
         $scope.signupDateString = moment(response.data.data.signup_date).format("dddd, MMMM Do YYYY, h:mm:ss a");
       }
     });
+
+    $scope.logout = function(){
+      store.remove('token')
+      store.remove('profile')
+      auth.signout();
+      $state.go('main')
+    }
 
 
   }
