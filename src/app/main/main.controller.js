@@ -9,7 +9,11 @@
   function MainController($scope, $http, auth) {
     $scope.isMember = false;
     $scope.hasAccount = false;
+    $scope.loggedIn = false;
 
+    if(auth && auth.isAuthenticated) {
+      $scope.loggedIn = true;
+    }
     if(auth && auth.isAuthenticated && auth.profile && auth.profile.roles && auth.profile.roles.indexOf('member') != -1) {
       $scope.isMember = true;
     }

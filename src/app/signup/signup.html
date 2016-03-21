@@ -99,19 +99,22 @@
       <fieldset>
         <legend>Subscription</legend>
         <div class="row">
-          <div class="large-6 columns">
+          <!--<div class="large-6 columns">
             <label>Payment period</label>
             <input ng-model="details.subscription.interval" type="radio" name="month" value="month" id="month"><label for="month">Monthly</label>
             <input ng-model="details.subscription.interval" type="radio" name="year" value="year" id="year"><label for="year">Annually</label>
-          </div>
-          <div class="large-6 columns">
+          </div>-->
+          <div class="large-12 columns">
             <div class="row collapse">
               <label>Amount</label>
               <div class="small-3 columns">
                 <span class="prefix">&pound;</span>
               </div>
-              <div class="small-9 columns">
+              <div class="small-6 columns">
                 <input type="text" ng-model="details.subscription.amount"/>
+              </div>
+              <div class="small-3 columns">
+                <span class="prefix">per month</span>
               </div>
             </div>
           </div>
