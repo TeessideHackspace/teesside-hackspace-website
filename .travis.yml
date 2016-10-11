@@ -9,7 +9,8 @@ before_install:
   - bower install
 script:
   - gulp build
-  - gulp deploy
+  - gulp s3-deploy
+  - gulp s3-rename
 # safelist
 branches:
   only:
