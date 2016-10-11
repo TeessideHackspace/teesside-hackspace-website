@@ -6,7 +6,7 @@
     "test": "gulp test"
   },
   "devDependencies": {
-    "Q": "0.0.1",
+    "q": "0.0.1",
     "browser-sync": "~2.9.11",
     "browser-sync-spa": "~1.0.3",
     "chalk": "~1.1.1",
