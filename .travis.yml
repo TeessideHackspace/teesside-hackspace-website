@@ -7,4 +7,12 @@ before_install:
   - npm install -g bower
   - npm install
   - bower install
-script: gulp build
+script:
+  - gulp build
+  - gulp deploy
+# safelist
+branches:
+  only:
+  - master
+  - develop
+

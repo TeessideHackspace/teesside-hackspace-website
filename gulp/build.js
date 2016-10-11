@@ -69,7 +69,6 @@ gulp.task('html', ['inject', 'partials'], function () {
     }))
     .pipe(htmlFilter.restore)
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
-    .pipe($.s3(conf.aws))
     .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }))
   });
 
@@ -80,7 +79,6 @@ gulp.task('fonts', function () {
     .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
     .pipe($.flatten())
     .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')))
-    .pipe($.s3(conf.aws));
 });
 
 gulp.task('other', function () {
@@ -93,13 +91,16 @@ gulp.task('other', function () {
     path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss}')
   ])
     .pipe(fileFilter)
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
-    .pipe($.s3(conf.aws));
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
 });
 
 gulp.task('clean', function () {
   return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')]);
 });
+
+gulp.task('s3-deploy', function() {
+  return gulp.src(path.join(conf.paths.dist, '/')).pipe($.s3(conf.aws));
+})
 
 gulp.task('s3-rename', function() {
   var client = s3.createClient({
@@ -142,4 +143,5 @@ gulp.task('s3-rename', function() {
 
 })
 
-gulp.task('build', ['html', 'fonts', 'other', 's3-rename']);
+gulp.task('build', ['html', 'fonts', 'other']);
+gulp.task('deploy', ['s3-deploy', 's3-rename']);
