@@ -99,8 +99,8 @@ gulp.task('clean', function () {
 });
 
 gulp.task('s3-deploy', function() {
-  return gulp.src(path.join(conf.paths.dist, '/')).pipe($.s3(conf.aws));
-})
+  return gulp.src(path.join(conf.paths.dist, '/**')).pipe($.s3(conf.aws));
+});
 
 gulp.task('s3-rename', function() {
   var client = s3.createClient({
@@ -141,7 +141,7 @@ gulp.task('s3-rename', function() {
   });
   return Q.all(promises);
 
-})
+});
 
 gulp.task('build', ['html', 'fonts', 'other']);
 gulp.task('deploy', ['s3-deploy', 's3-rename']);
