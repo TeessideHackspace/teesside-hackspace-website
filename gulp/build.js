@@ -3,6 +3,9 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
+var s3 = require('s3');
+
+
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
@@ -65,7 +68,8 @@ gulp.task('html', ['inject', 'partials'], function () {
     }))
     .pipe(htmlFilter.restore)
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
-    .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
+    .pipe($.s3(conf.aws))
+    .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }))
   });
 
 // Only applies for fonts from bower dependencies
@@ -74,7 +78,8 @@ gulp.task('fonts', function () {
   return gulp.src($.mainBowerFiles())
     .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
     .pipe($.flatten())
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')))
+    .pipe($.s3(conf.aws));
 });
 
 gulp.task('other', function () {
@@ -87,11 +92,46 @@ gulp.task('other', function () {
     path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss}')
   ])
     .pipe(fileFilter)
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
+    .pipe($.s3(conf.aws));
 });
 
 gulp.task('clean', function () {
   return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')]);
 });
 
-gulp.task('build', ['html', 'fonts', 'other']);
+gulp.task('s3-rename', function() {
+  var client = s3.createClient({
+    maxAsyncS3: 20,     // this is the default
+    s3RetryCount: 3,    // this is the default
+    s3RetryDelay: 1000, // this is the default
+    multipartUploadThreshold: 20971520, // this is the default (20 MB)
+    multipartUploadSize: 15728640, // this is the default (15 MB)
+    s3Options: {
+      accessKeyId: conf.aws.key,
+      secretAccessKey: conf.aws.secret,
+      region: conf.aws.region
+      // any other options are passed to new AWS.S3()
+      // See: http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Config.html#constructor-property
+    }
+  });
+
+  var htmlFilesToRename = [
+    'members',
+    'organisation'
+  ];
+
+  htmlFilesToRename.forEach(function(file){
+      client.copyObject({
+        Bucket: conf.aws.bucket,
+        CopySource: conf.aws.bucket + '/' + file + '.html',
+        Key: file,
+        ContentType: "text/html"
+      }, function(err, data) {
+        if (err) console.log(err, err.stack); // an error occurred
+      })
+  });
+
+})
+
+gulp.task('build', ['html', 'fonts', 'other', 's3-rename']);
