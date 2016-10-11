@@ -4,6 +4,7 @@ var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
 var s3 = require('s3');
+var Q = require('q');
 
 
 
@@ -121,16 +122,23 @@ gulp.task('s3-rename', function() {
     'organisation'
   ];
 
+  var promises = [];
   htmlFilesToRename.forEach(function(file){
+    var deferred = Q.defer();
       client.copyObject({
         Bucket: conf.aws.bucket,
         CopySource: conf.aws.bucket + '/' + file + '.html',
         Key: file,
         ContentType: "text/html"
       }, function(err, data) {
-        if (err) console.log(err, err.stack); // an error occurred
-      })
+        if (err){
+          deferred.reject(err);
+        }
+        deferred.resolve();
+      });
+      promises.push(deferred.promise);
   });
+  return Q.all(promises);
 
 })
 
