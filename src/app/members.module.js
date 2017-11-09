@@ -6,7 +6,7 @@
     .config(function(authProvider) {
       authProvider.init({
         domain: 'teessidehackspace.eu.auth0.com',
-        clientID: 'a2TPwlfe3SUYzIJ7YQcuDpx1nA1tzQPY'
+        clientID: 'bvlZ2mo0J3FofU2nNVPmtQAsURT6Mh4O'
       });
     })
     .run(function($rootScope, auth, store, jwtHelper, $location, $injector) {
