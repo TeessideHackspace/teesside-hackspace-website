@@ -10,7 +10,7 @@
   angular
     .module('membership')
     .constant('membershipApi', {
-      base: 'https://vill7dylal.execute-api.eu-west-1.amazonaws.com/'+env+'/'
+      base: 'https://r7102d3ni2.execute-api.eu-west-1.amazonaws.com/'+env+'/'
     })
 
 })();
