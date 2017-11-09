@@ -21,7 +21,10 @@
     }).state('signup-confirm', {
       url: '/signup-confirm',
       templateUrl: 'app/signup-confirm/signup-confirm.html',
-      controller: 'SignupConfirmController'
+      controller: 'SignupConfirmController',
+      data: {
+        requiresLogin: true
+      }
     }).state('main', {
       url: '/',
       templateUrl: 'app/main/main.html',

@@ -6,10 +6,13 @@
     .controller('SignupConfirmController', SignupConfirmController);
 
   /** @ngInject */
-  function SignupConfirmController($scope, $http, $stateParams, membershipApi, $location) {
+  function SignupConfirmController($scope, $http, $stateParams, membershipApi, $location, store) {
 
     $http({
       method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + store.get('token')
+      },
       url: membershipApi.base + 'gocardless_confirm',
       data: {data: getQueryParams()}
     }).then(function(response){
