@@ -14,12 +14,12 @@
       {{accountDetails.user.billing_postcode}}</p>
 
       <h5>Emergency Contact</h5>
-      <p>{{accountDetails.emergency_contact.first_name}} {{accountDetails.emergency_contact.last_name}}<br>
-        {{accountDetails.emergency_contact.phone}}</p>
+      <p>{{accountDetails.user.emergency_contact_first_name}} {{accountDetails.user.emergency_contact_last_name}}<br>
+        {{accountDetails.user.emergency_contact_phone}}</p>
     </div>
     <div class="large-6 columns">
       <h5>Subscription</h5>
-      <p>&pound;{{accountDetails.subscription.amount}} per {{accountDetails.subscription.interval}}</p>
+      <p>&pound;{{accountDetails.user.subscription_amount}} per month</p>
 
       <h5>Subscription Status</h5>
       <p>Your subscription status is: <strong>{{subscriptionStatus}}</strong></p>

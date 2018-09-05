@@ -6,19 +6,21 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $http, auth) {
+  function MainController($scope, $http, authService) {
     $scope.isMember = false;
     $scope.hasAccount = false;
     $scope.loggedIn = false;
 
-    if(auth && auth.isAuthenticated) {
+    if(authService && authService.isAuthenticated()) {
       $scope.loggedIn = true;
     }
-    if(auth && auth.isAuthenticated && auth.profile && auth.profile.roles && auth.profile.roles.indexOf('member') != -1) {
+    if(authService && authService.isAuthenticated() && authService.profile && authService.profile.roles && authService.profile.roles.indexOf('member') != -1) {
       $scope.isMember = true;
     }
-    if(auth && auth.isAuthenticated) {
+    if(authService && authService.isAuthenticated()) {
       $scope.hasAccount = true;
     }
+
+    $scope.auth = authService;
   }
 })();

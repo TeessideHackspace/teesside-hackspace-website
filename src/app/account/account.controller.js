@@ -6,47 +6,35 @@
     .controller('AccountController', AccountController);
 
   /** @ngInject */
-  function AccountController($scope, $http, auth, membershipApi, store, $state) {
-    console.log(auth)
+  function AccountController($scope, $http, authService, membershipApi, store, $state) {
 
     $scope.roles = [];
     $scope.showSignupPrompt = false;
-    $scope.subscriptionStatus = 'Unpaid';
-
-    if(auth && auth.isAuthenticated && auth.profile && auth.profile.roles) {
-      $scope.roles = auth.profile.roles;
-    }
-
-    if($scope.roles.indexOf('member') == -1) {
-      $scope.showSignupPrompt = true;
-    }
-
-    if($scope.roles.indexOf('payment_pending') != -1) {
-      $scope.subscriptionStatus = 'Payment Pending';
-    }
-
-    if($scope.roles.indexOf('paid') != -1) {
-      $scope.subscriptionStatus = 'Paid';
-    }
+    $scope.subscriptionStatus = 'Active';
 
     $http({
       method: 'GET',
       url: membershipApi.base + 'account',
       headers: {
-        Authorization: 'Bearer ' + store.get('token')
+        Authorization: 'Bearer ' + localStorage.getItem('id_token')
       }
     }).then(function(response){
       console.log(response)
-      if(response && response.data && response.data.data) {
-        $scope.accountDetails = response.data.data;
-        $scope.signupDateString = moment(response.data.data.signup_date).format("dddd, MMMM Do YYYY, h:mm:ss a");
+      if(response && response.data && response.data) {
+        $scope.accountDetails = response.data;
+        $scope.signupDateString = moment(response.data.user.signup_date).format("dddd, MMMM Do YYYY, h:mm:ss a");
+
+        $scope.roles = $scope.accountDetails.user.roles;
+
+        if($scope.roles.indexOf('member') == -1) {
+          $scope.showSignupPrompt = true;
+          $scope.subscriptionStatus = 'Inactive';
+        }
       }
     });
 
     $scope.logout = function(){
-      store.remove('token')
-      store.remove('profile')
-      auth.signout();
+      authService.logout();
       $state.go('main')
     }
 
