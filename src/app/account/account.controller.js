@@ -9,7 +9,7 @@
   function AccountController($scope, $http, authService, membershipApi, store, $state) {
 
     $scope.roles = [];
-    $scope.showSignupPrompt = false;
+    $scope.isMember = true;
     $scope.subscriptionStatus = 'Active';
 
     $http({
@@ -27,7 +27,7 @@
         $scope.roles = $scope.accountDetails.user.roles;
 
         if($scope.roles.indexOf('member') == -1) {
-          $scope.showSignupPrompt = true;
+          $scope.isMember = false;
           $scope.subscriptionStatus = 'Inactive';
         }
       }

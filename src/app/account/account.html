@@ -16,6 +16,10 @@
       <h5>Emergency Contact</h5>
       <p>{{accountDetails.user.emergency_contact_first_name}} {{accountDetails.user.emergency_contact_last_name}}<br>
         {{accountDetails.user.emergency_contact_phone}}</p>
+
+      <h5>
+        To change any of these details, please email the trustees at trustees@teessidehackspace.org.uk
+      </h5>
     </div>
     <div class="large-6 columns">
       <h5>Subscription</h5>
@@ -23,14 +27,13 @@
 
       <h5>Subscription Status</h5>
       <p>Your subscription status is: <strong>{{subscriptionStatus}}</strong></p>
+      <button class="button" ui-sref="changeSubscription" ng-show="isMember">Change</button>
+      <button class="button" ui-sref="signup" ng-show="!isMember">Resubscribe</button>
     </div>
 
-    <p>
-      To change any of these details, please email the trustees at trustees@teessidehackspace.org.uk
-    </p>
+
 
   </div>
 
-  <button class="button" ui-sref="signup" ng-show="showSignupPrompt || !accountDetails">Become a member</button>
   <button class="button" ng-click="logout()">Log out</button>
 </div>

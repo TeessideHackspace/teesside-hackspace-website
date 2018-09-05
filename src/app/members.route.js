@@ -14,10 +14,10 @@
       data: {
         requiresLogin: true
       }
-    }).state('login', {
-      url: '/login',
-      controller: 'LoginController',
-      templateUrl: 'app/login/login.html'
+    }).state('changeSubscription', {
+      url: '/changeSubscription',
+      controller: 'ChangeSubscriptionController',
+      templateUrl: 'app/changeSubscription/changeSubscription.html'
     }).state('signup-confirm', {
       url: '/signup-confirm',
       templateUrl: 'app/signup-confirm/signup-confirm.html',
@@ -33,6 +33,13 @@
       url: '/account',
       templateUrl: 'app/account/account.html',
       controller: 'AccountController',
+      data: {
+        requiresLogin: true
+      }
+    }).state('stats', {
+      url: '/stats',
+      templateUrl: 'app/stats/stats.html',
+      controller: 'StatsController',
       data: {
         requiresLogin: true
       }

@@ -8,7 +8,7 @@
   }
 
   angular
-    .module('membership')
+    .module('core', [])
     .constant('membershipApi', {
       base: 'https://7guej081l3.execute-api.eu-west-1.amazonaws.com/'+env+'/'
     })

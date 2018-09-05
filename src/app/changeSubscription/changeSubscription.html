@@ -1,0 +1,34 @@
+<div class="row hs-body">
+    <fieldset>
+      <legend ng-show="!isMember">Resubscribe</legend>
+      <legend ng-show="isMember">Change Subscription Amount</legend>
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row collapse">
+            <label>Amount</label>
+            <div class="small-3 columns">
+              <span class="prefix">&pound;</span>
+            </div>
+            <div class="small-6 columns">
+              <input type="text" ng-model="amount"/>
+            </div>
+            <div class="small-3 columns">
+              <span class="prefix">per month</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="button" ng-click="changeAmount()" ng-show="!isMember">Resubscribe</button>
+      <button class="button" ng-click="changeAmount()" ng-show="isMember">Change Subscription Amount</button>
+    </fieldset>
+
+  <fieldset ng-show="isMember">
+    <legend>Cancel Subscription</legend>
+    <p>
+      Teesside Hackspace owes its existence to members like you. If you don't feel like the services that we offer provide you good value for money, please consider reducing your subscription amount rather than cancelling your subscription. If we don't provide what you're looking for in a Hackspace, please get in touch and let us know what we could do better.
+    </p>
+    <button class="alert button" ng-click="cancel()" ng-show="isMember">Cancel Subscription</button>
+  </fieldset>
+
+
+</div>

@@ -120,7 +120,8 @@ gulp.task('s3-rename', function() {
 
   var htmlFilesToRename = [
     'members',
-    'organisation'
+    'organisation',
+    'stats',
   ];
 
   var promises = [];

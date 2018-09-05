@@ -12,8 +12,7 @@
     retirees or low income members the minimum subscription is £5/month.
   </p>
 
-  <button class="button" ui-sref="signup" ng-show="!isMember">Become a member</button>
-  <button class="button" ng-click="auth.login()" ng-show="!isLoggedIn">Log in</button>
-  <button class="button" ui-sref="account">Manage Account</button>
+  <button class="button" ui-sref="signup" ng-show="!hasSignedUpBefore">Become a member</button>
+  <button class="button" ui-sref="account" ng-show="!auth.isAuthenticated() || hasSignedUpBefore">Manage Account</button>
 
 </div>

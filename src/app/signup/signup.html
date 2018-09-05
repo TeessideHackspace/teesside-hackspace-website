@@ -1,129 +1,130 @@
 <div class="row hs-body">
-  <h1>Join Teesside Hackspace</h1>
-  <p>
-    Teesside Hackspace is a members-owned non-profit association. Members have a hand in the running of the
-    organisation, and will have 24/7 access to the space once we get one.
-  </p>
-  <p>
-    Membership can be paid monthly or annually by Direct Debit. We ask that you pay what you think the space will be
-    worth to you.
-    Please be as generous as you can, the more money we raise through membership, the better the space we get can
-    be.
-    The space will require our members to contribute an average subscription of £15/month to survive. For students,
-    retirees or low income members the minimum subscription is £5/month.
-  </p>
+  <div ng-show="!hasSignedUpBefore">
+    <h1>Join Teesside Hackspace</h1>
+    <p>
+      Teesside Hackspace is a members-owned non-profit association. Members have a hand in the running of the
+      organisation, and will have 24/7 access to the space once we get one.
+    </p>
+    <p>
+      Membership can be paid monthly or annually by Direct Debit. We ask that you pay what you think the space will be
+      worth to you.
+      Please be as generous as you can, the more money we raise through membership, the better the space we get can
+      be.
+      The space will require our members to contribute an average subscription of £15/month to survive. For students,
+      retirees or low income members the minimum subscription is £5/month.
+    </p>
 
-  <p>By joining the Teesside Hackspace you're becoming a member of Teesside Hackspace Ltd., and you agree to be bound
-    by
-    <a href="/organisation/docs/articles.pdf">our constitution</a>. You also agree to follow the
-    <a href="https://wiki.teessidehackspace.org.uk/wiki/Rules">rules of the space</a>.</p>
+    <p>By joining the Teesside Hackspace you're becoming a member of Teesside Hackspace Ltd., and you agree to be bound
+      by
+      <a href="/organisation/docs/articles.pdf">our constitution</a>. You also agree to follow the
+      <a href="https://wiki.teessidehackspace.org.uk/wiki/Rules">rules of the space</a>.</p>
 
-  <p><a href="http://www.legislation.gov.uk/ukpga/2006/46/part/8/chapter/2/crossheading/general">UK law</a> requires
-    that
-    you provide your real name and address in order to join. Your name will be visible to all members.</p>
+    <p><a href="http://www.legislation.gov.uk/ukpga/2006/46/part/8/chapter/2/crossheading/general">UK law</a> requires
+      that
+      you provide your real name and address in order to join. Your name will be visible to all members.</p>
 
-  <div>
-    <form novalidate class="simple-form hs-signup-form">
+    <div>
+      <form novalidate class="simple-form hs-signup-form">
 
-      <fieldset>
-        <legend>Billing Address</legend>
-        <div class="row">
-          <div class="large-6 columns">
-            <label>First Name
-              <input type="text" ng-model="details.user.first_name"/>
-            </label>
+        <fieldset>
+          <legend>Billing Address</legend>
+          <div class="row">
+            <div class="large-6 columns">
+              <label>First Name
+                <input type="text" ng-model="details.user.first_name"/>
+              </label>
+            </div>
+            <div class="large-6 columns">
+              <label>Last Name
+                <input type="text" ng-model="details.user.last_name"/>
+              </label>
+            </div>
           </div>
-          <div class="large-6 columns">
-            <label>Last Name
-              <input type="text" ng-model="details.user.last_name"/>
-            </label>
-          </div>
-        </div>
 
 
-        <div class="row">
-          <div class="large-12 columns">
-            <label>Address Line 1
-              <input type="text" ng-model="details.user.billing_address1"/>
-            </label>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Address Line 1
+                <input type="text" ng-model="details.user.billing_address1"/>
+              </label>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <label>Address Line 2
-              <input type="text" ng-model="details.user.billing_address2"/>
-            </label>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Address Line 2
+                <input type="text" ng-model="details.user.billing_address2"/>
+              </label>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <label>Town
-              <input type="text" ng-model="details.user.billing_town"/>
-            </label>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Town
+                <input type="text" ng-model="details.user.billing_town"/>
+              </label>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="large-6 columns">
-            <label>Postcode
-              <input type="text" ng-model="details.user.billing_postcode"/>
-            </label>
+          <div class="row">
+            <div class="large-6 columns">
+              <label>Postcode
+                <input type="text" ng-model="details.user.billing_postcode"/>
+              </label>
+            </div>
           </div>
-        </div>
-      </fieldset>
+        </fieldset>
 
-      <fieldset>
-        <legend>Emergency Contact</legend>
-        <div class="row">
-          <div class="large-12 columns">
-            <label>First Name
-              <input type="text" ng-model="details.emergency_contact.first_name"/>
-            </label>
+        <fieldset>
+          <legend>Emergency Contact</legend>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>First Name
+                <input type="text" ng-model="details.emergency_contact.first_name"/>
+              </label>
+            </div>
           </div>
-        </div>
-        <div class="row">
-        <div class="large-12 columns">
-          <label>Last Name
-            <input type="text" ng-model="details.emergency_contact.last_name"/>
-          </label>
-        </div>
-      </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <label>Phone Number
-              <input type="text" ng-model="details.emergency_contact.phone"/>
-            </label>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Last Name
+                <input type="text" ng-model="details.emergency_contact.last_name"/>
+              </label>
+            </div>
           </div>
-        </div>
-      </fieldset>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Phone Number
+                <input type="text" ng-model="details.emergency_contact.phone"/>
+              </label>
+            </div>
+          </div>
+        </fieldset>
 
-      <fieldset>
-        <legend>Subscription</legend>
-        <div class="row">
-          <!--<div class="large-6 columns">
-            <label>Payment period</label>
-            <input ng-model="details.subscription.interval" type="radio" name="month" value="month" id="month"><label for="month">Monthly</label>
-            <input ng-model="details.subscription.interval" type="radio" name="year" value="year" id="year"><label for="year">Annually</label>
-          </div>-->
-          <div class="large-12 columns">
-            <div class="row collapse">
-              <label>Amount</label>
-              <div class="small-3 columns">
-                <span class="prefix">&pound;</span>
-              </div>
-              <div class="small-6 columns">
-                <input type="text" ng-model="details.subscription.amount"/>
-              </div>
-              <div class="small-3 columns">
-                <span class="prefix">per month</span>
+        <fieldset>
+          <legend>Subscription</legend>
+          <div class="row">
+            <div class="large-12 columns">
+              <div class="row collapse">
+                <label>Amount</label>
+                <div class="small-3 columns">
+                  <span class="prefix">&pound;</span>
+                </div>
+                <div class="small-6 columns">
+                  <input type="text" ng-model="details.subscription.amount"/>
+                </div>
+                <div class="small-3 columns">
+                  <span class="prefix">per month</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </fieldset>
+        </fieldset>
 
-      <h5>Next: Set up Direct Debit with GoCardless</h5>
-      <input type="submit" ng-click="signup()" class="button" value="Next"/>
-    </form>
+        <h5>Next: Set up Direct Debit with GoCardless</h5>
+        <input type="submit" ng-click="signup()" class="button" value="Next"/>
+      </form>
+    </div>
+  </div>
+  <div ng-show="hasSignedUpBefore">
+    <h1>Looks like you've signed before</h1>
+    <button class="button" ui-sref="account">Manage Account</button>
   </div>
 
 </div>

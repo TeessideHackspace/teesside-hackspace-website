@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="teessideHackspaceWebsite">
+<html ng-app="stats">
 <head>
   <meta charset="utf-8">
   <title>Teesside Hackspace</title>
@@ -21,6 +21,7 @@
   <!-- css files will be automatically insert here -->
   <!-- endinject -->
   <!-- endbuild -->
+
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -54,53 +55,20 @@
     <nav class="top-bar row hs-nav">
       <section class="top-bar-section">
         <ul class="left">
-          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="/organisation">Organisation</a></li>
           <li><a href="/members">Membership</a></li>
           <li><a href="https://wiki.teessidehackspace.org.uk/">Wiki</a></li>
-          <li><a href="/stats">Stats</a></li>
+          <li class="active"><a href="/stats">Stats</a></li>
         </ul>
       </section>
     </nav>
 
 
-    <div class="row hs-body">
-      <div class="panel">
-        <h4>Teesside Hackspace is a non-profit group running a community-operated workshop in Middlesbrough where members can come together to share tools and knowledge.</h4>
-      </div>
 
-      <div class="large-4 columns">
-        <h3>Get Involved</h3>
-        <p>We hold <a href="https://wiki.teessidehackspace.org.uk/wiki/Weekly_Open_Evenings">public open evenings</a> every Tuesday from around 7pm at our space on <a href="https://wiki.teessidehackspace.org.uk/wiki/Victoria_Building">Victoria Road</a>. </p>
-        <h3>Membership</h3>
-        <p>Our members have a hand in the running of the organisation as well as 24/7 access to the space. Pay us what you
-          think is fair — join Teesside Hackspace.</p>
-      </div>
-      <div class="large-4 columns">
-        <h3>Resources</h3>
-        <ul>
-          <li><a href="https://wiki.teessidehackspace.org.uk/">The wiki</a>, for more about the space</li>
-          <li><a href="https://groups.google.com/forum/#!forum/teesside-hackspace">Chat to us on the mailing list</a></li>
-          <li><a href="https://wiki.teessidehackspace.org.uk/wiki/Slack">Chat to us on Slack</a></li>
-          <li><a href="/members">Become a member</a></li>
-          <li><a href="/organisation">About the organisation</a></li>
-        </ul>
-      </div>
-      <div class="large-4 columns hs-twitter">
-        <h3>Twitter</h3>
-        <a class="twitter-timeline" href="https://twitter.com/HackTees" data-widget-id="690915708587372545">Tweets by
-          @HackTees</a>
-        <script>!function (d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-          if (!d.getElementById(id)) {
-            js = d.createElement(s);
-            js.id = id;
-            js.src = p + "://platform.twitter.com/widgets.js";
-            fjs.parentNode.insertBefore(js, fjs);
-          }
-        }(document, "script", "twitter-wjs");</script>
-      </div>
-    </div>
+
+      <div ui-view></div>
+
   </div>
 </div>
 
@@ -108,6 +76,24 @@
 <footer class="hs-footer">
   <p>Copyright © 2016 Teesside Hackspace Ltd.</p>
 </footer>
+
+<!-- build:js(src) scripts/member/vendor.js -->
+<!-- bower:js -->
+<!-- run `gulp inject` to automatically populate bower script dependencies -->
+<!-- endbower -->
+<!-- endbuild -->
+<script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+<script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+
+<!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/member/app.js -->
+<!-- inject:js -->
+<!-- js files will be automatically insert here -->
+<!-- endinject -->
+
+<!-- inject:partials -->
+<!-- angular templates will be automatically converted in js and inserted here -->
+<!-- endinject -->
+<!-- endbuild -->
 
 </body>
 </html>

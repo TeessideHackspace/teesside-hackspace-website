@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('membership', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'mm.foundation', 'auth0.auth0', 'angular-storage', 'angular-jwt'])
+    .module('membership', ['core', 'ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'mm.foundation', 'auth0.auth0', 'angular-storage', 'angular-jwt'])
     .config(function (angularAuth0Provider, $windowProvider) {
       var $window = $windowProvider.$get();
       angularAuth0Provider.init({

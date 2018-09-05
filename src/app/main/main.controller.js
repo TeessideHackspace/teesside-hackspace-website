@@ -6,7 +6,20 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $http, authService) {
+  function MainController($scope, $http, authService, membershipApi) {
+    $scope.hasSignedUpBefore = false;
+    $http({
+      method: 'GET',
+      url: membershipApi.base + 'account',
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('id_token')
+      }
+    }).then(function(response){
+      if(response.data && response.data.user) {
+        $scope.hasSignedUpBefore = true;
+      }
+    });
+
     $scope.isMember = false;
     $scope.hasAccount = false;
     $scope.loggedIn = false;
