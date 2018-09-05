@@ -11,7 +11,7 @@
     $http({
       method: 'POST',
       headers: {
-        Authorization: 'Bearer ' + store.get('token')
+        Authorization: 'Bearer ' + localStorage.getItem('id_token')
       },
       url: membershipApi.base + 'gocardless_confirm',
       data: {data: getQueryParams()}

@@ -46,7 +46,7 @@
         method: 'POST',
         url: membershipApi.base + 'signup',
         headers: {
-          Authorization: 'Bearer ' + store.get('token')
+          Authorization: 'Bearer ' + localStorage.getItem('id_token')
         },
         data: {data: $scope.details}
       }).then(function(response){
