@@ -31,11 +31,7 @@
       {
         label: 'Water',
         v: 20
-      },
-      {
-        label: 'Internet',
-        v: 35
-      },
+      }
     ]
     var totalExpense = expenses.reduce(function(p, c) {
       p += c.v;

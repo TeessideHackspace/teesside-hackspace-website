@@ -26,7 +26,7 @@
 
         $scope.roles = $scope.accountDetails.user.roles;
 
-        if($scope.roles.indexOf('member') == -1) {
+        if($scope.roles.indexOf('member') === -1) {
           $scope.isMember = false;
           $scope.subscriptionStatus = 'Inactive';
         }
