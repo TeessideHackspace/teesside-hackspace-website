@@ -17,7 +17,6 @@
         Authorization: 'Bearer ' + localStorage.getItem('id_token')
       }
     }).then(function(response){
-      console.log(response)
       if(response && response.data && response.data) {
         $scope.accountDetails = response.data;
         $scope.amount = response.data.user.subscription_amount;
@@ -54,7 +53,7 @@
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('id_token')
         }
-      }).then(function(response){
+      }).then(function(){
         $state.go('account')
       });
     }

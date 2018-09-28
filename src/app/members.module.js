@@ -11,10 +11,10 @@
         redirectUri: $window.location.origin + $window.location.pathname
       });
     })
-    .run(function ($rootScope, authService, store, jwtHelper, $location, $injector, $window, $state) {
+    .run(function ($rootScope, authService, store, jwtHelper, $location, $injector, $window) {
       authService.handleAuthentication();
 
-      $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
+      $rootScope.$on('$stateChangeStart', function (event, toState) {
         if (toState.data && toState.data.requiresLogin && !authService.isAuthenticated()) {
           event.preventDefault();
           authService.login($window.location.origin + $window.location.pathname);

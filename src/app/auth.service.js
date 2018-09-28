@@ -16,10 +16,14 @@
     function handleAuthentication() {
       return $q(function(resolve, reject) {
         angularAuth0.parseHash(function(err, authResult) {
-          if (authResult && authResult.accessToken && authResult.idToken) {
-            setSession(authResult);
+          if(err) {
+            reject(err);
+          } else {
+            if (authResult && authResult.accessToken && authResult.idToken) {
+              setSession(authResult);
+            }
+            resolve();
           }
-          resolve();
         });
       })
     }

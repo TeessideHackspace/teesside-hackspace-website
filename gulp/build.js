@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var conf = require('./conf');
 var s3 = require('s3');
 var Q = require('q');
+var useref = require('gulp-useref');
 
 
 
@@ -44,7 +45,7 @@ gulp.task('html', ['inject', 'partials'], function () {
 
   return gulp.src(path.join(conf.paths.tmp, '/serve/*.html'))
     .pipe($.inject(partialsInjectFile, partialsInjectOptions))
-    .pipe(assets = $.useref.assets())
+    .pipe(assets = useref())
     .pipe($.rev())
     .pipe(jsFilter)
     .pipe($.sourcemaps.init())
@@ -57,7 +58,7 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe($.minifyCss({ processImport: false }))
     .pipe($.sourcemaps.write('maps'))
     .pipe(cssFilter.restore)
-    .pipe(assets.restore())
+    //.pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(htmlFilter)

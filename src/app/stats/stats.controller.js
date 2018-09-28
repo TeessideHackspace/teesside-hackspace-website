@@ -97,9 +97,8 @@
             }
           })
         }
-      }
+      };
 
-      console.log(response)
       if(response && response.data) {
         $scope.stats = response.data;
         $scope.stats.avg_subscription = Math.floor($scope.stats.income / $scope.stats.num_members) / 100;

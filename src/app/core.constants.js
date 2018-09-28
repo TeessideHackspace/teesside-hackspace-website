@@ -1,4 +1,3 @@
-/* global malarkey:false, moment:false */
 (function() {
   'use strict';
 
@@ -12,5 +11,6 @@
     .constant('membershipApi', {
       base: 'https://7guej081l3.execute-api.eu-west-1.amazonaws.com/'+env+'/'
     })
+    .constant('moment', window.moment);
 
 })();

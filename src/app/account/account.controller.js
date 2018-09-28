@@ -6,7 +6,7 @@
     .controller('AccountController', AccountController);
 
   /** @ngInject */
-  function AccountController($scope, $http, authService, membershipApi, store, $state) {
+  function AccountController($scope, $http, authService, membershipApi, store, $state, moment) {
 
     $scope.roles = [];
     $scope.isMember = true;
@@ -19,7 +19,6 @@
         Authorization: 'Bearer ' + localStorage.getItem('id_token')
       }
     }).then(function(response){
-      console.log(response)
       if(response && response.data && response.data) {
         $scope.accountDetails = response.data;
         $scope.signupDateString = moment(response.data.user.signup_date).format("dddd, MMMM Do YYYY, h:mm:ss a");
