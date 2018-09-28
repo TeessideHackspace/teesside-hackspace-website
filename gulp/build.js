@@ -60,7 +60,7 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe(cssFilter.restore)
     //.pipe(assets.restore())
     .pipe($.useref())
-    .pipe($.revReplace())
+    //.pipe($.revReplace())
     .pipe(htmlFilter)
     .pipe($.minifyHtml({
       empty: true,
