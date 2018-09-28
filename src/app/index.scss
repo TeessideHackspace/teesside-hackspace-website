@@ -72,7 +72,20 @@ body{
   height: auto;
 }
 
-
+.sponsors {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    li {
+      display: inline-block;
+      img{
+        max-height: 80px;
+      }
+    }
+  }
+}
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
