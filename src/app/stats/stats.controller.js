@@ -76,7 +76,8 @@
         options: {
           hAxis: {
             format: 'currency',
-            minValue: 0
+            minValue: 0,
+            viewWindow:{min:0}
           },
           legend: { position: 'none'},
         }
