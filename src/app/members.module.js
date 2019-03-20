@@ -12,14 +12,19 @@
       });
     })
     .run(function ($rootScope, authService, store, jwtHelper, $location, $injector, $window) {
-      authService.handleAuthentication();
-
-      $rootScope.$on('$stateChangeStart', function (event, toState) {
-        if (toState.data && toState.data.requiresLogin && !authService.isAuthenticated()) {
+      if(authService.isAuthenticated()) {
+        authService.renewTokens();
+      } else {
+        authService.handleAuthentication();
+      }
+      /*$rootScope.$on('$stateChangeStart', function (event, toState) {
+        if(authService.authInProgress()) {
+          event.preventDefault();
+        } else if (toState.data && toState.data.requiresLogin && !authService.isAuthenticated()) {
           event.preventDefault();
           authService.login($window.location.origin + $window.location.pathname);
         }
-      });
+      });*/
     });
 
 })();

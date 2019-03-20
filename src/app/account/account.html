@@ -1,38 +1,53 @@
 <div class="row hs-body">
 
+
+
+  <h1>Hi {{accountDetails.user.first_name}}</h1>
+
   <div class="panel" ng-show="signupDateString">
-    <h4>You have been a member since <strong>{{signupDateString}}</strong></h4>
+    <h4>You signed up on <strong>{{signupDateString}}</strong></h4>
   </div>
+
 
   <div class="row" ng-show="accountDetails">
     <div class="large-6 columns">
-      <h5>Address</h5>
+      <h4>Address</h4>
       <p>{{accountDetails.user.first_name}} {{accountDetails.user.last_name}}<br>
       {{accountDetails.user.billing_address1}}<br>
       {{accountDetails.user.billing_address2}}<br ng-if="accountDetails.user.billing_address2">
       {{accountDetails.user.billing_town}}<br>
       {{accountDetails.user.billing_postcode}}</p>
 
-      <h5>Emergency Contact</h5>
+      <h4>Emergency Contact</h4>
       <p>{{accountDetails.user.emergency_contact_first_name}} {{accountDetails.user.emergency_contact_last_name}}<br>
         {{accountDetails.user.emergency_contact_phone}}</p>
 
-      <h5>
-        To change any of these details, please email the trustees at trustees@teessidehackspace.org.uk
-      </h5>
+      <div class="panel callout">
+        <h4>
+        To change your address or emergency contact, please email the trustees at trustees@teessidehackspace.org.uk
+        </h4>
+      </div>
     </div>
     <div class="large-6 columns">
-      <h5>Subscription</h5>
+      <h4>Subscription</h4>
       <p>&pound;{{accountDetails.user.subscription_amount}} per month</p>
 
-      <h5>Subscription Status</h5>
+      <h4>Subscription Status</h4>
       <p>Your subscription status is: <strong>{{subscriptionStatus}}</strong></p>
       <button class="button" ui-sref="changeSubscription" ng-show="isMember">Change</button>
-      <button class="button" ui-sref="changeSubscription" ng-show="!isMember">Resubscribe</button>
+      <button class="button" ui-sref="changeSubscription" ng-show="!isMember">Subscribe</button>
     </div>
 
+  </div>
 
 
+
+
+
+
+  <div class="panel" ng-if="roles.length">
+    <h4>Your Roles</h4>
+    <span class="label info" ng-repeat="role in roles">{{role}}</span>
   </div>
 
   <button class="button" ng-click="logout()">Log out</button>

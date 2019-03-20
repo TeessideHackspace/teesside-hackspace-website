@@ -8,24 +8,22 @@
     .module('membership')
     .service('authService', authService);
 
-  authService.$inject = ['$state', 'angularAuth0', '$timeout', '$q'];
+  authService.$inject = ['$state', 'angularAuth0', '$timeout', '$q', '$rootScope'];
 
   function authService($state, angularAuth0, $timeout, $q) {
 
-    // ...
     function handleAuthentication() {
-      return $q(function(resolve, reject) {
-        angularAuth0.parseHash(function(err, authResult) {
-          if(err) {
-            reject(err);
-          } else {
-            if (authResult && authResult.accessToken && authResult.idToken) {
-              setSession(authResult);
-            }
-            resolve();
-          }
-        });
-      })
+      angularAuth0.parseHash(function(err, authResult) {
+        if (authResult && authResult.accessToken && authResult.idToken) {
+          setSession(authResult);
+          $state.go('main', {}, {reload: true});
+        } else if (err) {
+          $timeout(function() {
+            $state.go('main', {}, {reload: true});
+          });
+          console.log(err);
+        }
+      });
     }
 
     function setSession(authResult) {
@@ -38,8 +36,7 @@
 
     function login(redirect) {
       angularAuth0.authorize({
-        responseType: 'token',
-        redirectUri: redirect
+        responseType: 'token id_token'
       });
     }
 
@@ -53,8 +50,26 @@
     function isAuthenticated() {
       // Check whether the current time is past the
       // Access Token's expiry time
-      var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+      var expiresAt = localStorage.getItem('expires_at');
+      if(!expiresAt) {
+        return false;
+      }
+      expiresAt = JSON.parse(localStorage.getItem('expires_at'));
       return new Date().getTime() < expiresAt;
+    }
+
+    function renewTokens() {
+      angularAuth0.checkSession({
+          responseType: 'token id_token'
+        },
+        function(err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            setSession(result);
+          }
+        }
+      );
     }
 
     return {
@@ -62,7 +77,8 @@
       handleAuthentication: handleAuthentication,
       login: login,
       logout: logout,
-      isAuthenticated: isAuthenticated
+      isAuthenticated: isAuthenticated,
+      renewTokens: renewTokens
     }
   }
 })();

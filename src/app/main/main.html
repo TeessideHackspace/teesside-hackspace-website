@@ -1,17 +1,21 @@
 <div class="row hs-body">
-  <p>
-    Teesside Hackspace is a members-owned non-profit association. Members have a hand in the running of the
-    organisation as well as 24/7 access to the space.
-  </p>
-  <p>
-    Membership can be paid monthly or annually by Direct Debit. We ask that you pay what you think the space will be
-    worth to you.
-    Please be as generous as you can, Teesside Hackspace is currently funded entirely by membership dues & donations.
-    We're currently <a href="/stats">making a loss</a> and burning through our cash reserves to finance our new space.
-    Our recommended minimum subscription is £15/month. For students, retirees or low income members the minimum subscription is £5/month.
-  </p>
+  <div ng-if="auth.isAuthenticated() && noAccount">
+      <p>
+        Teesside Hackspace is a members-owned non-profit association. Members have a hand in the running of the
+        organisation as well as 24/7 access to the space.
+      </p>
+      <p>
+        Membership can be paid monthly or annually by Direct Debit. We ask that you pay what you think the space will be
+        worth to you.
+        Please be as generous as you can, Teesside Hackspace is currently funded entirely by membership dues & donations.
+        We're currently <a href="/stats">making a loss</a> and burning through our cash reserves to finance our new space.
+        Our recommended minimum subscription is £15/month. For students, retirees or low income members the minimum subscription is £5/month.
+      </p>
 
-  <button class="button" ui-sref="signup" ng-show="!hasSignedUpBefore">Become a member</button>
-  <button class="button" ui-sref="account" ng-show="!auth.isAuthenticated() || hasSignedUpBefore">Manage Account</button>
-
+      <button class="button" ui-sref="signup">Become a member</button>
+    <button class="button" ng-click="auth.logout()">Log Out</button>
+  </div>
+  <div ng-if="!auth.isAuthenticated()">
+    <button class="button" ng-click="auth.login()">Login / Register</button>
+  </div>
 </div>
