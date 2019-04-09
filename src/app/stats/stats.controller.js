@@ -10,11 +10,11 @@
     var expenses = [
       {
         label: 'Rent',
-        v: 450
+        v: 625
       },
       {
         label: 'Service Charge',
-        v: 39.18
+        v: 52.91
       },
       {
         label: 'Building Insurance',
@@ -26,11 +26,15 @@
       },
       {
         label: 'Electricity',
-        v: 20
+        v: 30
       },
       {
         label: 'Water',
         v: 20
+      },
+      {
+        label: 'Internet',
+        v: 32
       }
     ]
     var totalExpense = expenses.reduce(function(p, c) {
