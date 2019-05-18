@@ -29,12 +29,16 @@
         v: 30
       },
       {
+        label: 'Gas',
+        v: 15
+      },
+      {
         label: 'Water',
-        v: 20
+        v: 22.16
       },
       {
         label: 'Internet',
-        v: 32
+        v: 38.4
       }
     ]
     var totalExpense = expenses.reduce(function(p, c) {
