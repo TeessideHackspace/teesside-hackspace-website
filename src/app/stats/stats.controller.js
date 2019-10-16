@@ -26,11 +26,11 @@
       },
       {
         label: 'Electricity',
-        v: 30
+        v: 75
       },
       {
         label: 'Gas',
-        v: 15
+        v: 5
       },
       {
         label: 'Water',
@@ -39,6 +39,10 @@
       {
         label: 'Internet',
         v: 38.4
+      },
+      {
+        label: 'Hosting & Email',
+        v: 8.22
       }
     ]
     var totalExpense = expenses.reduce(function(p, c) {
