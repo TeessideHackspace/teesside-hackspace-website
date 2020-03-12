@@ -22,15 +22,19 @@
       },
       {
         label: 'Liability Insurance',
+        v: 20
+      },
+      {
+        label: 'Accounting',
         v: 25
       },
       {
         label: 'Electricity',
-        v: 75
+        v: 100
       },
       {
         label: 'Gas',
-        v: 5
+        v: 50
       },
       {
         label: 'Water',
