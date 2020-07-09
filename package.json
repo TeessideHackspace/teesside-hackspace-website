@@ -43,7 +43,7 @@
     "karma-jasmine": "~1.1.2",
     "karma-ng-html2js-preprocessor": "~1.0.0",
     "karma-phantomjs-launcher": "~1.0.4",
-    "lodash": "~4.17.11",
+    "lodash": "~4.17.13",
     "main-bower-files": "~2.13.1",
     "phantomjs": "~2.1.7",
     "q": "^1.4.1",
