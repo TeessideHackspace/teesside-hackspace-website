@@ -100,7 +100,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('s3-deploy', function() {
-  return gulp.src(path.join(conf.paths.dist, '/**')).pipe($.s3(conf.aws));
+  return gulp.src(path.join(conf.paths.dist, '/**'), {dot: true}) .pipe($.s3(conf.aws));
 });
 
 gulp.task('s3-rename', function() {
