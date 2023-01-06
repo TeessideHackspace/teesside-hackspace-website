@@ -132,7 +132,7 @@
               xhr.onreadystatechange = function() {
                   if (xhr.readyState == XMLHttpRequest.DONE) {
                       form.reset(); //reset form after AJAX success or do something else
-                      document.getElementById('success-hide').classList.remove("CLASS_NAME");
+                      document.getElementById('success-hide').classList.remove("success-hide");
                   }
               }
               //Fail the onsubmit to avoid page refresh.
