@@ -99,12 +99,22 @@
           Come chat to us on <a href="https://wiki.teessidehackspace.org.uk/wiki/Slack">Slack</a>! Enter your email address below to receive an invitation. 
         </p>
         <form id="slackform">
-          <label>Email Address
-            <input type="text" name="email"/>
-          </label>
-          <input type="submit" value="Invite Me" class="button">
+          <div class="row">
+            <div class="large-12 columns">
+              <div class="row collapse">
+                <div class="small-10 columns">
+                  <label>Email Address
+                    <input type="text" name="email"/>
+                  </label>
+                </div>
+                <div class="small-2 columns">
+                  <input type="submit" value="Invite Me" class="button postfix">
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <div data-alert class="alert-box success hide" id="success">
+          <div data-alert class="alert-box success success-hide" id="success">
             Success! Check your inbox for an invitation.
           </div>
 
@@ -124,7 +134,7 @@
               xhr.onreadystatechange = function() {
                   if (xhr.readyState == XMLHttpRequest.DONE) {
                       form.reset(); //reset form after AJAX success or do something else
-                      document.getElementById('success').classList.remove("CLASS_NAME");
+                      document.getElementById('success-hide').classList.remove("CLASS_NAME");
                   }
               }
               //Fail the onsubmit to avoid page refresh.
