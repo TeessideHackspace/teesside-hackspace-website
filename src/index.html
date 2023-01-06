@@ -30,6 +30,8 @@
       ga('create', 'UA-88004616-1', 'auto');
       ga('send', 'pageview');
     </script>
+
+    
 </head>
 <body>
 <div id="fb-root"></div>
@@ -83,17 +85,6 @@
         <h3>Membership</h3>
         <p>Our members have a hand in the running of the organisation as well as 24/7 access to the space. Pay us what you
           think is fair — join Teesside Hackspace.</p>
-
-        <div class="sponsors">
-          <h3>Thanks to our sponsors!</h3>
-          <ul>
-            <li>
-              <a href="http://www.eclipseict.co.uk/">
-                <img src="assets/images/sponsors/eclipse.jpg"/>
-              </a>
-            </li>
-          </ul>
-        </div>
       </div>
       <div class="large-4 columns">
         <h3>Resources</h3>
@@ -103,25 +94,44 @@
           <li><a href="/members">Become a member</a></li>
           <li><a href="/organisation">About the organisation</a></li>
         </ul>
-        <h3>Donate!</h3>
-        <p>Teesside Hackspace is currently funded entirely by membership dues & donations. We're <a href="/stats">currently making a loss</a> and burning through our cash reserves to finance our new space. Your donation could help make the difference and keep us running.</p>
-        <h4>Donate with Paypal</h4>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-          <input type="hidden" name="cmd" value="_s-xclick">
-          <input type="hidden" name="hosted_button_id" value="WW69KQ4P77SL4">
-          <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
-          <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-        </form>
-        <br/>
-        <h4>Donate With Cryptocurrency</h4>
-        <div>
-          <a class="donate-with-crypto"
-             href="https://commerce.coinbase.com/checkout/5858453d-e069-450a-be3b-06f654d2cd0b">
-            <span>Donate with Crypto</span>
-          </a>
-          <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807">
+        <h3>Join us on Slack!</h3>
+        <p>
+          Come chat to us on <a href="https://wiki.teessidehackspace.org.uk/wiki/Slack">Slack</a>! Enter your email address below to receive an invitation. 
+        </p>
+        <form id="slackform">
+          <label>Email Address
+            <input type="text" name="email"/>
+          </label>
+          <input type="submit" value="Invite Me" class="button">
+
+          <div data-alert class="alert-box success hide" id="success">
+            Success! Check your inbox for an invitation.
+          </div>
+
+          <script>
+            var form = document.getElementById('slackform');
+            form.addEventListener("submit", function(event){
+              event.preventDefault();
+              var xhr = new XMLHttpRequest();
+              var formData = new FormData(form);
+              //open the request
+              xhr.open('POST','https://7guej081l3.execute-api.eu-west-1.amazonaws.com/prod/slack-invite')
+              xhr.setRequestHeader("Content-Type", "application/json");
+      
+              //send the form data
+              xhr.send(JSON.stringify(Object.fromEntries(formData)));
+      
+              xhr.onreadystatechange = function() {
+                  if (xhr.readyState == XMLHttpRequest.DONE) {
+                      form.reset(); //reset form after AJAX success or do something else
+                      document.getElementById('success').classList.remove("CLASS_NAME");
+                  }
+              }
+              //Fail the onsubmit to avoid page refresh.
+              return false; 
+          });
           </script>
-        </div>
+        </form>
       </div>
       <div class="large-4 columns hs-twitter">
         <h3>Social</h3>
