@@ -6,7 +6,7 @@
     "test": "gulp test"
   },
   "devDependencies": {
-    "browser-sync": "~2.24.7",
+    "browser-sync": "~2.27.11",
     "browser-sync-spa": "~1.0.3",
     "chalk": "~2.4.1",
     "del": "~3.0.0",
